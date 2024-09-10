@@ -15,7 +15,8 @@ Bienvenue dans la documentation de l'application IoT développée avec Kodular. 
    - [Authentification par Mot de Passe](#authentification-par-mot-de-passe)
    - [Gestion de la Connexion Bluetooth](#gestion-de-la-connexion-bluetooth)
 2. [Conseils pour Résoudre les Problèmes](#conseils-pour-résoudre-les-problèmes)
-3. [À Propos du Concepteur](#à-propos-du-concepteur)
+3. [conception de l'application](#conception-de-l'application)
+4. [À Propos du Concepteur](#à-propos-du-concepteur)
 
 ## Fonctionnalités Principales
 
@@ -362,8 +363,78 @@ Des boutons pour afficher la liste des appareils disponibles et pour se déconne
 - **Passage entre Fonctions :** Déconnectez-vous avant de changer de fonctionnalité et reconnectez-vous après avoir redémarré le Bluetooth.
 - **Redémarrage :** Redémarrez l'application avant de vous connecter à un nouvel appareil.
 
+  
+## Conception de l'application
+## Fonctionnalités de l'Application
+
+### 1. **Chat Bluetooth avec Arduino**
+
+**Description :**  
+Cette fonctionnalité permet une communication bidirectionnelle entre l'Arduino et votre téléphone via Bluetooth. Vous pouvez envoyer des commandes à l'Arduino et recevoir des réponses en temps réel.
+
+**Conception :**  
+- **Kodular Utilisé :** Utilisation du composant BluetoothClient pour gérer la communication Bluetooth.
+- **Écran :** Créez un écran avec des boutons pour envoyer des commandes et une zone de texte pour afficher les réponses .
+- **Logique :** Implémentez des blocs pour envoyer des données via Bluetooth lorsqu'un bouton est pressé et recevoir des réponses à afficher dans la zone de texte.
+
+### 2. **Contrôle à Distance via Joystick Analogique**
+
+**Description :**  
+Permet de contrôler des appareils à distance en utilisant un joystick analogique. Les coordonnées de déplacement sont envoyées au microcontrôleur, permettant un contrôle précis.
+
+**Conception :**  
+- **Kodular Utilisé :** Utilisation du composant Canvas pour afficher le joystick et récupérer les coordonnées.
+- **Écran :** Créez un écran avec un composant Canvas pour le joystick et un autre pour afficher les données de contrôle.
+- **Logique :** Utilisez des blocs pour lire les coordonnées du joystick et envoyer ces données via Bluetooth au microcontrôleur.
+
+### 3. **Lecture de Données en Temps Réel**
+
+**Description :**  
+Cette fonctionnalité permet de lire et d'afficher les données envoyées par le microcontrôleur en temps réel, comme les valeurs des capteurs.
+
+**Conception :**  
+- **Kodular Utilisé :** Utilisation du composant BluetoothClient pour recevoir les données et du composant Label pour afficher les données.
+- **Écran :** Créez un écran avec des composants Label pour afficher les données.
+- **Logique :** Utilisez des blocs pour recevoir les données via Bluetooth et mettre à jour les labels en temps réel avec ces données.
+
+### 4. **Commandes Vocales**
+
+**Description :**  
+Permet de contrôler l'application en envoyant des commandes vocales via la reconnaissance vocale de Google.
+
+**Conception :**  
+- **Kodular Utilisé :** Utilisation du composant SpeechRecognizer pour capter les commandes vocales.
+- **Écran :** Créez un écran avec un bouton pour activer la reconnaissance vocale et un Label pour afficher les commandes reconnues.
+- **Logique :** Utilisez des blocs pour démarrer la reconnaissance vocale lorsqu'un bouton est pressé, puis envoyer les commandes reconnues via Bluetooth à l'Arduino.
+
+### 5. **Authentification par Mot de Passe**
+
+**Description :**  
+Un système d'authentification qui vérifie le mot de passe saisi et renvoie une confirmation basée sur la validité du mot de passe.
+
+**Conception :**  
+- **Kodular Utilisé :** Utilisation du composant TextBox pour saisir le mot de passe et du composant Button pour soumettre.
+- **Écran :** Créez un écran avec un TextBox pour saisir le mot de passe, un Button pour soumettre et un Label pour afficher les résultats de la vérification.
+- **Logique :** Utilisez des blocs pour comparer le mot de passe saisi avec le mot de passe attendu, puis envoyer le résultat via Bluetooth à l'Arduino. Affichez le message de résultat dans le Label.
+
+### 6. **Gestion de la Connexion Bluetooth**
+
+**Description :**  
+Facilite la connexion et la déconnexion avec les appareils Bluetooth.
+
+**Conception :**  
+- **Kodular Utilisé :** Utilisation des composants BluetoothClient et ListPicker pour gérer les connexions.
+- **Écran :** Créez un écran avec des boutons pour se connecter et se déconnecter, et un ListPicker pour sélectionner les appareils disponibles.
+- **Logique :** Utilisez des blocs pour afficher la liste des appareils disponibles et se connecter ou se déconnecter selon l'action de l'utilisateur.
+
+
+Il me serais malheuresement difficile d'expliquer le fonctionnement de chaque chose, surtout la logique derrière chaque fonctionnement de manière clair vu que c'est très complexe. Pour les plus passionnés qui désirent s'inspirer de mon travail pour faire leur propre application je laisserai les fichier de designer pour les screen et de blocs pour la logique de mon projet pour mieux comprendre le fonctionnement de chaque bloc. Je vous pmettrai mes sources pour les differents fonctionnements dont les plus complex comme le joystick. 
+Merci. 
+
+
 ## À Propos du Concepteur
 
 Cette application marque le début d'un projet IoT ambitieux développé avec passion grâce à Kodular. Bien que cette première version présente encore des opportunités d'amélioration, elle a été conçue pour répondre à vos besoins en matière de contrôle et de gestion d'appareils connectés.
+Il m'a été difficile de trouver des cours et videos tuto pour me guider dans mon projet j'ai donc eu l'idée de le mettre sur un depot git en espérant que cela puisse aider. 
 
-Pour toute question ou retour, n'hésitez pas à me contacter.
+Pour toute question ou retour, n'hésitez pas à me contacter....
