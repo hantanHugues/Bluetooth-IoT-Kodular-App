@@ -588,4 +588,8 @@ Il m'a été difficile de trouver des cours et videos tuto pour me guider dans m
 Pour toute question ou retour, n'hésitez pas à me contacter....
 
 
-##Source et reference
+## Source et reference
+[Kodular community 1](https://community.kodular.io/t/how-to-create-a-joystick-with-the-canvas-component/58129)
+[Koduar community](https://community.kodular.io/t/advanced-joystick-controls-in-kodular/155580)
+[youtube](https://www.youtube.com/watch?v=RM0G7q-G6bo)
+[documentation](https://docs.kodular.io/)
