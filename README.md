@@ -224,7 +224,7 @@ void loop() {
 - **Connexion Bluetooth :** Assurez-vous que le module est appairé avec votre appareil avant de commencer.
 - **Dépannage :** Vérifiez les connexions et la vitesse de communication (`baud rate`) si des problèmes surviennent.
 
-Avec ce code il vous suffiras de dire les commandes spécifiées sans l'application pour faire réagire l'arduino en conséquence et effectuer nla commande que vous avez donner essayez de personaliser ce code pour mieux comprendre et aussi explorer les differentes possibilitées qu offre cette fonctionnalitée.
+Avec ce code il vous suffiras de dire les commandes spécifiées sans l'application pour faire réagire l'arduino en conséquence et effectuer la commande que vous avez donner essayez de personaliser ce code pour mieux comprendre et aussi explorer les differentes possibilitées qu offre cette fonctionnalitée.
 
 
 ### Authentification par Mot de Passe
