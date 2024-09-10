@@ -115,7 +115,142 @@ Ce guide vous permettra de démarrer avec l'envoi et la réception de commandes 
 Le joystick analogique intégré permet de contrôler des appareils à distance avec une grande précision. Les coordonnées de déplacement sont envoyées au microcontrôleur pour une réponse adéquate.
 
 **Exemple de code :**
-- Des exemples pour tester cette fonctionnalité avec un Arduino Uno sont disponibles sur mon GitHub.
+## Contrôle d'une Voiture à Moteurs avec Arduino et Bluetooth
+
+## Composants Nécessaires
+
+- **Arduino** (UNO, Nano, etc.)
+- **Module Bluetooth** (HC-05 ou HC-06)
+- **Pont en H** (L298N) pour contrôler les moteurs
+- **Moteurs DC** (2 ou 4 selon votre configuration)
+- **Alimentation** pour les moteurs (batterie)
+- **Câblage** pour les connexions
+
+## Branchement des Moteurs
+
+- **Moteurs** : Connectez les moteurs aux sorties du module L298N.
+- **Alimentation** : Connectez l'alimentation des moteurs à l'entrée du L298N (Vcc et GND).
+- **Contrôle des Moteurs** : Connectez les broches de contrôle du L298N à l'Arduino pour chaque moteur (IN1, IN2, IN3, IN4).
+
+  ## code arduino
+  ```Cpp
+   #include <SoftwareSerial.h>
+    Créer une instance de SoftwareSerial pour le module Bluetooth
+   SoftwareSerial bluetoothSerial(2, 3); // RX, TX
+
+   // Définir les broches de contrôle des moteurs
+   const int motor1Pin1 = 8; // IN1 sur le L298N
+   const int motor1Pin2 = 9; // IN2 sur le L298N
+   const int motor2Pin1 = 10; // IN3 sur le L298N
+   const int motor2Pin2 = 11; // IN4 sur le L298N
+
+   void setup() {
+   Serial.begin(9600); // Initialiser la communication série avec le moniteur série
+     bluetoothSerial.begin(9600); // Initialiser la communication série avec le module Bluetooth
+     Serial.println("Prêt à recevoir des données Bluetooth...");
+      pinMode(motor1Pin1, OUTPUT);
+     pinMode(motor1Pin2, OUTPUT);
+      pinMode(motor2Pin1, OUTPUT);
+     pinMode(motor2Pin2, OUTPUT);
+   }
+
+   void loop() {
+     // Vérifier si des données sont disponibles à lire depuis le Bluetooth
+     if (bluetoothSerial.available()) {
+       char receivedChar = bluetoothSerial.read(); // Lire un caractère
+       Serial.print("Reçu : ");
+       Serial.println(receivedChar);
+        // Commande pour avancer
+       if (receivedChar == 'A') {
+         avancer();
+       }
+       // Commande pour reculer
+       else if (receivedChar == 'R') {
+         reculer();
+       }
+       // Commande pour tourner à gauche
+       else if (receivedChar == 'G') {
+         tournerGauche();
+       }
+       // Commande pour tourner à droite
+       else if (receivedChar == 'D') {
+         tournerDroite();
+       }
+       // Commande pour s'arrêter
+       else if (receivedChar == 'S') {
+         arreter();
+       } 
+       receivedChar = 0;// Afficher le caractère reçu sur le moniteur série
+     }
+   }
+   // Fonction pour avancer
+   void avancer() {
+     digitalWrite(motor1Pin1, HIGH);
+     digitalWrite(motor1Pin2, LOW);
+     digitalWrite(motor2Pin1, HIGH);
+     digitalWrite(motor2Pin2, LOW);
+     Serial.println("Avancer");
+   }
+
+   // Fonction pour reculer
+   void reculer() {
+     digitalWrite(motor1Pin1, LOW);
+     digitalWrite(motor1Pin2, HIGH);
+     digitalWrite(motor2Pin1, LOW);
+     digitalWrite(motor2Pin2, HIGH);
+     Serial.println("Reculer");
+   }
+
+   // Fonction pour tourner à gauche
+   void tournerGauche() {
+    digitalWrite(motor1Pin1, LOW);
+     digitalWrite(motor1Pin2, HIGH);
+     digitalWrite(motor2Pin1, HIGH);
+     digitalWrite(motor2Pin2, LOW);
+     Serial.println("Gauche");
+   }
+
+   // Fonction pour tourner à droite
+   void tournerDroite() {
+     digitalWrite(motor1Pin1, HIGH);
+     digitalWrite(motor1Pin2, LOW);
+     digitalWrite(motor2Pin1, LOW);
+     digitalWrite(motor2Pin2, HIGH);
+     Serial.println("Droite");
+   }
+
+   // Fonction pour s'arrêter
+   void arreter() {
+     digitalWrite(motor1Pin1, LOW);
+     digitalWrite(motor1Pin2, LOW);
+     digitalWrite(motor2Pin1, LOW);
+     digitalWrite(motor2Pin2, LOW);
+     Serial.println("Arrêté");
+      }
+  
+
+## Fonctionnement du Code
+
+- **Initialisation** :
+  - Les broches pour contrôler les moteurs sont définies et configurées comme sorties.
+  - La communication série est initialisée pour le module Bluetooth et le moniteur série.
+
+- **Boucle Principale (`loop`)** :
+  - Vérifie si des données sont disponibles via Bluetooth.
+  - Lit chaque commande (`A`, `R`, `G`, `D`, `S`) et appelle la fonction correspondante pour contrôler les moteurs.
+
+- **Fonctions de Contrôle** :
+  - **`avancer()`** : Active les moteurs pour avancer.
+  - **`reculer()`** : Active les moteurs pour reculer.
+  - **`tournerGauche()`** et **`tournerDroite()`** : Contrôle les moteurs pour tourner à gauche ou à droite.
+  - **`arreter()`** : Arrête tous les moteurs.
+
+## Tests et Vérifications
+
+1. **Tester chaque commande individuellement** pour s'assurer que les moteurs répondent correctement.
+2. **Vérifier les connexions des broches** entre l'Arduino, le L298N, et les moteurs pour s'assurer qu'elles sont correctes.
+3. **Vérifier l'alimentation des moteurs** pour éviter les baisses de tension et les comportements inattendus.
+.
 
 ### Lecture de Données en Temps Réel
 
@@ -377,6 +512,8 @@ Cette fonctionnalité permet une communication bidirectionnelle entre l'Arduino 
 - **Écran :** Créez un écran avec des boutons pour envoyer des commandes et une zone de texte pour afficher les réponses .
 - **Logique :** Implémentez des blocs pour envoyer des données via Bluetooth lorsqu'un bouton est pressé et recevoir des réponses à afficher dans la zone de texte.
 
+  **Image de l'interface**
+
 ### 2. **Contrôle à Distance via Joystick Analogique**
 
 **Description :**  
@@ -397,6 +534,8 @@ Cette fonctionnalité permet de lire et d'afficher les données envoyées par le
 - **Écran :** Créez un écran avec des composants Label pour afficher les données.
 - **Logique :** Utilisez des blocs pour recevoir les données via Bluetooth et mettre à jour les labels en temps réel avec ces données.
 
+**Image de l'interface**
+
 ### 4. **Commandes Vocales**
 
 **Description :**  
@@ -406,6 +545,7 @@ Permet de contrôler l'application en envoyant des commandes vocales via la reco
 - **Kodular Utilisé :** Utilisation du composant SpeechRecognizer pour capter les commandes vocales.
 - **Écran :** Créez un écran avec un bouton pour activer la reconnaissance vocale et un Label pour afficher les commandes reconnues.
 - **Logique :** Utilisez des blocs pour démarrer la reconnaissance vocale lorsqu'un bouton est pressé, puis envoyer les commandes reconnues via Bluetooth à l'Arduino.
+- 
 
 ### 5. **Authentification par Mot de Passe**
 
@@ -417,6 +557,8 @@ Un système d'authentification qui vérifie le mot de passe saisi et renvoie une
 - **Écran :** Créez un écran avec un TextBox pour saisir le mot de passe, un Button pour soumettre et un Label pour afficher les résultats de la vérification.
 - **Logique :** Utilisez des blocs pour comparer le mot de passe saisi avec le mot de passe attendu, puis envoyer le résultat via Bluetooth à l'Arduino. Affichez le message de résultat dans le Label.
 
+  **Image de l'interface**
+
 ### 6. **Gestion de la Connexion Bluetooth**
 
 **Description :**  
@@ -427,9 +569,15 @@ Facilite la connexion et la déconnexion avec les appareils Bluetooth.
 - **Écran :** Créez un écran avec des boutons pour se connecter et se déconnecter, et un ListPicker pour sélectionner les appareils disponibles.
 - **Logique :** Utilisez des blocs pour afficher la liste des appareils disponibles et se connecter ou se déconnecter selon l'action de l'utilisateur.
 
+  **image de l'interface**
+
 
 Il me serais malheuresement difficile d'expliquer le fonctionnement de chaque chose, surtout la logique derrière chaque fonctionnement de manière clair vu que c'est très complexe. Pour les plus passionnés qui désirent s'inspirer de mon travail pour faire leur propre application je laisserai les fichier de designer pour les screen et de blocs pour la logique de mon projet pour mieux comprendre le fonctionnement de chaque bloc. Je vous pmettrai mes sources pour les differents fonctionnements dont les plus complex comme le joystick. 
 Merci. 
+
+**Image des blocs**
+en annlysant les blocs de logiques  utilisées vous pourez mieux avoir une idée des composants utilisées pour les screen.
+
 
 
 ## À Propos du Concepteur
@@ -438,3 +586,6 @@ Cette application marque le début d'un projet IoT ambitieux développé avec pa
 Il m'a été difficile de trouver des cours et videos tuto pour me guider dans mon projet j'ai donc eu l'idée de le mettre sur un depot git en espérant que cela puisse aider. 
 
 Pour toute question ou retour, n'hésitez pas à me contacter....
+
+
+##Source et reference
