@@ -27,7 +27,7 @@ L'application propose une fonctionnalité de chat bidirectionnelle permettant de
 - Connectez votre téléphone à l'Arduino via Bluetooth.
 - Envoyez des commandes et recevez des réponses directement sur l'interface de l'application.
 **Illustration**
-# Exemple de Code pour Arduino : Envoyer et Recevoir des Commandes Texte via Bluetooth
+## Exemple de Code pour Arduino : Envoyer et Recevoir des Commandes Texte via Bluetooth
 
 ## Matériel Nécessaire
 - **Arduino Uno (ou autre modèle compatible)**
