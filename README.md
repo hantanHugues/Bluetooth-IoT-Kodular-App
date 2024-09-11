@@ -585,7 +585,8 @@ en annlysant les blocs de logiques  utilisées vous pourez mieux avoir une idée
 Cette application marque le début d'un projet IoT ambitieux développé avec passion grâce à Kodular. Bien que cette première version présente encore des opportunités d'amélioration, elle a été conçue pour répondre à vos besoins en matière de contrôle et de gestion d'appareils connectés.
 Il m'a été difficile de trouver des cours et videos tuto pour me guider dans mon projet j'ai donc eu l'idée de le mettre sur un depot git en espérant que cela puisse aider. 
 
-Pour toute question ou retour, n'hésitez pas à me contacter....
+Pour toute question ou retour, n'hésitez pas à me contacter.... 
+[Linkdln](https://www.linkedin.com/in/agossou-fred-hugues-hantan-35992431b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 
 
 ## Source et reference
