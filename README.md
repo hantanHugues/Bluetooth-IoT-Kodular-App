@@ -50,11 +50,13 @@ L'application propose une fonctionnalité de chat bidirectionnelle permettant de
 
 // Initialisation des broches RX et TX pour la communication Bluetooth
 SoftwareSerial bluetooth(2, 3); // RX, TX
+#define pinLED 7
 
 void setup() {
   // Démarrage de la communication série avec l'ordinateur et le module Bluetooth
   Serial.begin(9600);
   bluetooth.begin(9600);
+ pinMode(pinLED, OUTPUT);
 
   Serial.println("Bluetooth est prêt. Connectez-vous et envoyez des commandes !");
 }
