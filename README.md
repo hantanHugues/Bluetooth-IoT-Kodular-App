@@ -1,11 +1,11 @@
 # Bluetooth-IoT-Kodular-App
 # Documentation de l'Application IoT
 
-## Introduction
+# Introduction
 
 Bienvenue dans la documentation de l'application IoT développée avec Kodular. Cette application est conçue pour faciliter les interactions avec des appareils via Bluetooth. Elle permet l'envoi et la réception de commandes, l'affichage de données en temps réel, et le contrôle à distance de divers appareils.
 
-## Table des Matières
+# Table des Matières
 
 1. [Fonctionnalités Principales](#fonctionnalités-principales)
    - [Chat Bluetooth avec Arduino](#chat-bluetooth-avec-arduino)
@@ -18,9 +18,9 @@ Bienvenue dans la documentation de l'application IoT développée avec Kodular. 
 3. [conception de l'application](#conception-de-l'application)
 4. [À Propos du Concepteur](#à-propos-du-concepteur)
 
-## Fonctionnalités Principales
+# Fonctionnalités Principales
 
-### Chat Bluetooth avec Arduino
+# Chat Bluetooth avec Arduino
 
 L'application propose une fonctionnalité de chat bidirectionnelle permettant de communiquer entre le moniteur série de l'Arduino et votre téléphone. Cette fonctionnalité est utile pour envoyer des commandes à l'Arduino et afficher les réponses sous forme de messages reçus. Elle facilite le diagnostic et l'interaction en temps réel.
 
@@ -112,7 +112,7 @@ void loop() {
 Ce guide vous permettra de démarrer avec l'envoi et la réception de commandes texte via Bluetooth entre votre Arduino et un autre appareil utilisant l'application.
 
   
-### Contrôle à Distance via Joystick Analogique
+# Contrôle à Distance via Joystick Analogique
 
 Le joystick analogique intégré permet de contrôler des appareils à distance avec une grande précision. Les coordonnées de déplacement sont envoyées au microcontrôleur pour une réponse adéquate.
 
@@ -254,14 +254,14 @@ Le joystick analogique intégré permet de contrôler des appareils à distance 
 3. **Vérifier l'alimentation des moteurs** pour éviter les baisses de tension et les comportements inattendus.
 .
 
-### Lecture de Données en Temps Réel
+# Lecture de Données en Temps Réel
 
 Cette fonctionnalité permet de lire et d'afficher les données envoyées par le microcontrôleur, comme les valeurs des capteurs, directement depuis la page du joystick.
 
 **Utilisation :**
 - Accédez à la page du joystick pour voir les données en temps réel.
 
-### Commandes Vocales
+# Commandes Vocales
 
 L'application intègre la reconnaissance vocale de Google pour envoyer des commandes vocales à l'Arduino. Cette fonctionnalité simplifie le contrôle de vos appareils par la voix.
 
@@ -365,14 +365,14 @@ void loop() {
 Avec ce code il vous suffiras de dire les commandes spécifiées sans l'application pour faire réagire l'arduino en conséquence et effectuer la commande que vous avez donner essayez de personaliser ce code pour mieux comprendre et aussi explorer les differentes possibilitées qu offre cette fonctionnalitée.
 
 
-### Authentification par Mot de Passe
+# Authentification par Mot de Passe
 
 Un système d'authentification par mot de passe avec un clavier virtuel permet de protéger l'accès à certaines fonctionnalités. L'Arduino vérifie le code reçu et affiche "Correct" ou "Entrez le mot de passe" selon la validité du mot de passe.
 
 **Utilisation :**
 - Saisissez le mot de passe à l'aide du clavier virtuel pour accéder aux fonctionnalités protégées.
 
-  ## exemple de code arduino : mot de passe
+  ## Exemple de code arduino : mot de passe
   ## Matériel Nécessaire
 
 - Arduino (Uno, Nano, etc.)
